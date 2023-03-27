@@ -1,10 +1,21 @@
 :root{
-    --textColor:rgb(68, 12, 121);
+    --headerColor:rgb(68, 12, 121);
+}
+
+body {
+    font-size: 18px;
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 2px;
 }
 
 h1 {
-    color: var(--textColor);
+    color: var(--headerColor);
     line-height: 1.25;
     font-weight: 700;
     margin: 0;
+    box-shadow: 10px 10px;
+}
+
+#footer {
+    justify-content: center;
 }
