@@ -1,0 +1,10 @@
+:root{
+    --textColor:rgb(68, 12, 121);
+}
+
+h1 {
+    color: var(--textColor);
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0;
+}
