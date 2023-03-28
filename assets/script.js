@@ -1,12 +1,26 @@
 var APIKey = "5b2b7b9a047f3cbe2fa1edd5d1203608";
-var city;
-var state;
-var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q={searchLocation}&limit=5&appid={APIKey}'
-var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat}&lon={lon}&units=imperial&appid={APIKey}"
 
 var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q={searchLocation}&limit=5&appid=5b2b7b9a047f3cbe2fa1edd5d1203608'
 var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat}&lon={lon}&units=imperial&appid=5b2b7b9a047f3cbe2fa1edd5d1203608"
 var userFormEl = document.querySelector('#user-form');
+// collects users input in the search and displays it into the search history
+function addResult() {
+    cityInput = document.getElementById("userInput").value;
+    searchHistoryEl = getInfo();
+    var searchCity = $("<div>")
+    searchCity.attr('id', cityInput)
+    searchCity.text(cityInput)
+    searchCity.addClass("h4")
+
+    if (searchHistoryEl.includes(cityInput) == false) {
+        getElementById("search-history").append(searchCity)
+    }
+   getElementById("current-weather").attr("style", "display:inline-block")
+   addInfo(cityInput);
+};
+// add event listener to search history buttons
+document.getElementById('searchBtn').on("click", addResult);
+document.getElementById('searchBtn').on("click", getResult);
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
