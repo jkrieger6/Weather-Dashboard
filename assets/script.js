@@ -1,5 +1,5 @@
 var APIKey = "5b2b7b9a047f3cbe2fa1edd5d1203608";
-
+var userInputEl = document.getElementById("userInput");
 var geoUrl = 'https://api.openweathermap.org/geo/1.0/direct?q={searchLocation}&limit=5&appid=5b2b7b9a047f3cbe2fa1edd5d1203608'
 var weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat}&lon={lon}&units=imperial&appid=5b2b7b9a047f3cbe2fa1edd5d1203608"
 var userFormEl = document.querySelector('#user-form');
@@ -18,9 +18,23 @@ function addResult() {
    getElementById("current-weather").attr("style", "display:inline-block")
    addInfo(cityInput);
 };
+
+function getWeather() {
+    
+}
 // add event listener to search history buttons
 document.getElementById('searchBtn').on("click", addResult);
-document.getElementById('searchBtn').on("click", getResult);
+document.getElementById('searchBtn').on("click", getWeather);
+
+//add event listener to seach history items
+document.getElementById("search-history").on('click', function(event) {
+event.preventDefault();
+document.getElementById("current-weather").attr('style', "display:inline-block")
+userInputEl.value = event.target.id;
+getResult();
+});
+
+
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
