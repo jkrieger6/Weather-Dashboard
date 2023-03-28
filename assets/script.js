@@ -59,10 +59,9 @@ function getResult() {
     $(".city").append(temperature);
     $(".city").append(windSpeed);
     $(".city").append(humidity);
-    
-}
 
-fetch(weatherUrl)
+
+    fetch(weatherUrl)
 .then(function (response) {
     return response.json();
   })
@@ -77,3 +76,5 @@ fetch(weatherUrl)
         var temp = item.main.temp;
         var description = item.weather[0].description;
     })
+    
+}
