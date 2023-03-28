@@ -35,7 +35,7 @@ h1.app-title {
     border-style: double;
     border-width: 3px;
     background-color: var(--light);
-    padding: 3% 3%;
+    
 }
 
 .subtitle {
