@@ -2,12 +2,6 @@
     --headerColor:rgb(68, 12, 121);
 }
 
-body {
-    font-size: 18px;
-    font-family: Helvetica, Arial, sans-serif;
-    line-height: 2px;
-}
-
 h1 {
     color: var(--headerColor);
     line-height: 1.25;
