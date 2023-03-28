@@ -20,7 +20,7 @@ function addResult() {
 };
 
 function getWeather() {
-    
+
 }
 // add event listener to search history buttons
 document.getElementById('searchBtn').on("click", addResult);
@@ -34,16 +34,34 @@ userInputEl.value = event.target.id;
 getResult();
 });
 
+function getResult() {
+    var countryCode = "US";
+    var cityCode = cityInput;
+    var geoLongitude;
+    var geoLatitude;
+    var cityName = ("<h>");
+    cityName.addClass("h3");
+    var temperature = $("<div>");
+    var humidity = $("<div>")
+    var windSpeed = ("<div>");
+    var weatherIcon = ("<img>");
+    weatherIcon.addClass("icon");
+    var dateTime =("<div>");
 
+    $(".forecast-five-day").empty();
+    $(".city").empty();
+    cityInput = document.getElementById('userInput').value;
 
-var formSubmitHandler = function (event) {
-    event.preventDefault();
-    var cityInput = city.value.trim();
-    if (cityInput) {
-        getCity(cityInput);
-        searchHistoryEl
-    }
+    $(".city").addClass("list-group");
+    $(".city").append(cityName);
+    $(".city").append(dateTime);
+    $(".city").append(weatherIcon);
+    $(".city").append(temperature);
+    $(".city").append(windSpeed);
+    $(".city").append(humidity);
+    
 }
+
 fetch(weatherUrl)
 .then(function (response) {
     return response.json();
