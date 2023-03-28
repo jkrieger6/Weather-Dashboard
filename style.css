@@ -1,15 +1,62 @@
 :root{
-    --headerColor:rgb(68, 12, 121);
+    --headerColor:rgb(178, 2, 2);
+    --light:rgb(244, 244, 164);
+    --shadow:rgba(88, 74, 74, 0.221);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 h1 {
     color: var(--headerColor);
+    background-color: var(--light);
     line-height: 1.25;
     font-weight: 700;
-    margin: 0;
     box-shadow: 10px 10px;
+    margin: auto;
+}
+
+h1.app-title {
+    background-color: var(--shadow);
+    color: var(--headerColor);
+}
+
+.hero {
+    padding: 3% 3%;
+    justify-content: center;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border-radius: 1rem;
+    border-style: double;
+    border-width: 3px;
+    background-color: var(--light);
+    padding: 3% 3%;
+}
+
+.subtitle {
+    border-radius: 1rem;
+    border-style: double;
+    border-width: 3px;
+    background-color: var(--light);
+    padding: 3% 3%;
+}
+
+#current-weather, #forecast {
+    display:none;
+}
+
+#userInput {
+    padding: 3% 3%;
 }
 
 #footer {
     justify-content: center;
+    position:relative;
+    display:flex;
+    flex-wrap: wrap;
 }
