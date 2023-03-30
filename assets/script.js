@@ -81,6 +81,11 @@ var weatherUrl =
       return response.json();
     })
     .then(function (data) {
+      for (let i = 0; i < data.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.textContent = data[i].html_url;
+        $("list-group").appendChild(listItem);
+      }
      // console.log(data);
       var dateTime = data.list[0].dt_txt;
       // console.log(dateTime);
@@ -97,33 +102,4 @@ var weatherUrl =
       imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
       $weatherIcon.attr('src',imgSrc)
     });
-
-    // function dateTime() {
-    //   var currentHour = dayjs().hour();
-    //   console.log(currentHour);
-    //   $("#current-weather").each(function () {
-    //     var hour = parseInt($(this).attr("id"));
-    //     console.log(hour);
-    //     if (currentHour > hour) {
-    //       $(this).addClass("past");
-    //     } else if (currentHour == hour) {
-    //       $(this).addClass("present");
-    //     } else {
-    //       $(this).addClass("future");
-    //     }
-        // Add code to get any user input that was saved in localStorage and set
-        // the values of the corresponding textarea elements.
-    //     $("userInput" + hour + " #search-history").val(localStorage.getItem(hour));
-    //   });
-    // }
-    // dateTime();
-    
-
-//   var forecastData = data.list;
-//   forecastDataforEach((item) => {
-//     var date = list[4].dt_txt
-//     var time = date.toLocaleTimeString();
-//     var temp = item.main.temp;
-//     var description = item.weather[0].description;
-//   });
 }
