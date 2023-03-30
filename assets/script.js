@@ -82,6 +82,15 @@ var weatherUrl =
     })
     .then(function (data) {
       console.log(data);
+      var tempData = data.list[0].main.temp;
+      console.log("Currently " + tempData + "F");
+      var humData = data.list[0].main.humidity;
+      console.log("With a humidty of " + humData);
+      var windSpeedData = data.list[0].wind.speed;
+      console.log("A wind speed of " + windSpeedData + "mph");
+      var currentConditionsData = data.list[0].weather[0].description;
+      console.log(currentConditionsData);
+
     });
 
   // var forecastData = data.list;
