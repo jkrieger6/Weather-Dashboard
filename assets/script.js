@@ -55,24 +55,24 @@ $("search-history").on("click", function (event) {
 function getWeatherData(lat, lon) {
 
   var $cityName = $("<h3>");
-  var temperature = $("<div>");
-  var humidity = $("<div>");
-  var windSpeed = $("<div>");
-  var weatherIcon = $("<img>");
-  weatherIcon.addClass("icon");
+  var $temperature = $("<div>");
+  var $humidity = $("<div>");
+  var $windSpeed = $("<div>");
+  var $weatherIcon = $("<img>");
+  $weatherIcon.addClass("icon");
   var dateTime = "<div>";
 
   $(".forecast-five-day").empty();
   $(".city").empty();
-  cityInput = $("userInput").value;
+  cityInput = $("userInput").val();
 
   $(".city").addClass("list-group");
   $(".city").append($cityName);
   $(".city").append(dateTime);
-  $(".city").append(weatherIcon);
-  $(".city").append(temperature);
-  $(".city").append(windSpeed);
-  $(".city").append(humidity);
+  $(".city").append($weatherIcon);
+  $(".city").append($temperature);
+  $(".city").append($windSpeed);
+  $(".city").append($humidity);
 
 var weatherUrl =
   "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon=" + lon + "&units=imperial&appid="+ APIKey;
@@ -82,16 +82,19 @@ var weatherUrl =
     })
     .then(function (data) {
       console.log(data);
+      var dateTime = data.list[0].dt_txt;
+      console.log(dateTime);
       var tempData = data.list[0].main.temp;
       console.log("Currently " + tempData + "F");
       var humData = data.list[0].main.humidity;
-      console.log("With a humidty of " + humData);
+      console.log("With a humidty of " + humData + "%");
       var windSpeedData = data.list[0].wind.speed;
       console.log("A wind speed of " + windSpeedData + "mph");
       var currentConditionsData = data.list[0].weather[0].description;
       console.log(currentConditionsData);
 
     });
+    
 
 //   var forecastData = data.list;
 //   forecastDataforEach((item) => {
