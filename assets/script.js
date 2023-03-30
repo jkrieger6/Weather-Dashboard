@@ -45,12 +45,12 @@ $("#searchBtn").on("click", addResult);
 // $('#searchBtn').on("click", getWeather);
 
 //add event listener to seach history items
-$("search-history").on("click", function (event) {
-  event.preventDefault();
-  $("current-weather").attr("style", "display:inline-block");
-  userInputEl.value = event.target.id;
-  getResult();
-});
+// $("search-history").on("click", function (event) {
+//   event.preventDefault();
+//   $("current-weather").attr("style", "display:inline-block");
+//   $userInputEl.value = event.target.id;
+//   getResult();
+// });
 
 function getWeatherData(lat, lon) {
 
@@ -100,6 +100,5 @@ var weatherUrl =
       console.log("With a humidty of " + humData + "%");
       console.log("A wind speed of " + windSpeedData + "mph");
       console.log(currentConditionsData);
-      console.log(weatherIcon);
     });
 }
