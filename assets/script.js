@@ -84,22 +84,22 @@ var weatherUrl =
       for (let i = 0; i < data.length; i++) {
         var listItem = document.createElement('li');
         listItem.textContent = data[i].html_url;
-        $("list-group").appendChild(listItem);
+        $("list-group").append(listItem);
       }
-     // console.log(data);
       var dateTime = data.list[0].dt_txt;
-      // console.log(dateTime);
       var tempData = data.list[0].main.temp;
-      // console.log("Currently " + tempData + "F");
       var humData = data.list[0].main.humidity;
-      // console.log("With a humidty of " + humData + "%");
       var windSpeedData = data.list[0].wind.speed;
-      // console.log("A wind speed of " + windSpeedData + "mph");
       var currentConditionsData = data.list[0].weather[0].description;
-      // console.log(currentConditionsData);
       var weatherIcon = data.list[0].weather[0].icon;
-      // console.log(weatherIcon);
       imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
       $weatherIcon.attr('src',imgSrc)
+      console.log(data);
+      console.log(dateTime);
+      console.log("Currently " + tempData + "F");
+      console.log("With a humidty of " + humData + "%");
+      console.log("A wind speed of " + windSpeedData + "mph");
+      console.log(currentConditionsData);
+      console.log(weatherIcon);
     });
 }
