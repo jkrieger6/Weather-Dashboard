@@ -93,11 +93,11 @@ var weatherUrl =
 
     });
 
-  // var forecastData = data.list;
-  // forecastDataforEach((item) => {
-  //   var date = new Date(item.dt_txt);
-  //   var time = date.toLocaleTimeString();
-  //   var temp = item.main.temp;
-  //   var description = item.weather[0].description;
-  // });
-}
+//   var forecastData = data.list;
+//   forecastDataforEach((item) => {
+//     var date = list[4].dt_txt
+//     var time = date.toLocaleTimeString();
+//     var temp = item.main.temp;
+//     var description = item.weather[0].description;
+//   });
+// }
