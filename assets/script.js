@@ -81,20 +81,21 @@ var weatherUrl =
       return response.json();
     })
     .then(function (data) {
-                // console.log(data);
+     // console.log(data);
       var dateTime = data.list[0].dt_txt;
-                // console.log(dateTime);
+      // console.log(dateTime);
       var tempData = data.list[0].main.temp;
-                // console.log("Currently " + tempData + "F");
+      // console.log("Currently " + tempData + "F");
       var humData = data.list[0].main.humidity;
-                // console.log("With a humidty of " + humData + "%");
+      // console.log("With a humidty of " + humData + "%");
       var windSpeedData = data.list[0].wind.speed;
-                // console.log("A wind speed of " + windSpeedData + "mph");
+      // console.log("A wind speed of " + windSpeedData + "mph");
       var currentConditionsData = data.list[0].weather[0].description;
-                // console.log(currentConditionsData);
+      // console.log(currentConditionsData);
       var weatherIcon = data.list[0].weather[0].icon;
-                // console.log(weatherIcon);
-        
+      // console.log(weatherIcon);
+      imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
+      $weatherIcon.attr('src',imgSrc)
     });
 
     // function dateTime() {
