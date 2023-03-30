@@ -100,4 +100,4 @@ var weatherUrl =
 //     var temp = item.main.temp;
 //     var description = item.weather[0].description;
 //   });
-// }
+}
