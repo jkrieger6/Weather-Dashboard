@@ -94,6 +94,26 @@ var weatherUrl =
       console.log(currentConditionsData);
 
     });
+
+    function dateTime() {
+      var currentHour = dayjs().hour();
+      console.log(currentHour);
+      $("#current-weather").each(function () {
+        var hour = parseInt($(this).attr("id"));
+        console.log(hour);
+        if (currentHour > hour) {
+          $(this).addClass("past");
+        } else if (currentHour == hour) {
+          $(this).addClass("present");
+        } else {
+          $(this).addClass("future");
+        }
+        // Add code to get any user input that was saved in localStorage and set
+        // the values of the corresponding textarea elements.
+        $("userInput" + hour + " #search-history").val(localStorage.getItem(hour));
+      });
+    }
+    dateTime();
     
 
 //   var forecastData = data.list;
