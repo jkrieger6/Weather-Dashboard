@@ -4,9 +4,13 @@ var $userInputEl = $("#userInput");
 var weatherUrl =
   "https://api.openweathermap.org/data/2.5/forecast?lat=$lat}&lon={lon}&units=imperial&appid=5b2b7b9a047f3cbe2fa1edd5d1203608";
 var userFormEl = document.querySelector("#user-form");
+
+//add event listener to search button
+$("#searchBtn").on("click", addResult);
 // collects users input in the search and displays it into the search history
 function addResult() {
   var cityInput = $userInputEl.val();
+  getCityData(cityInput);
   // searchHistoryEl = getInfo();
   var searchCity = $("<div>");
   searchCity.attr("id", cityInput);
@@ -39,8 +43,6 @@ function getCityData(city) {
     });
 }
 
-// add event listener to search history buttons
-$("#searchBtn").on("click", addResult);
 // $('#searchBtn').on("click", getWeather);
 
 //add event listener to seach history items
@@ -69,7 +71,7 @@ function getWeatherData(lat, lon) {
   $("#current-weather").append($cityName);
   $("#current-weather").append($humidity);
   $("#current-weather").append($weatherIcon);
-  $("#currrent-weather").append($temperature);
+  $("#current-weather").append($temperature);
   $("#current-weather").append($windSpeed);
   $("#current-weather").append($conditions);
   // $(".city").append($humidity);
