@@ -56,7 +56,7 @@ function getWeatherData(lat, lon) {
   // var $temperature = $("<div>");
   // var $humidity = $("<div>");
   // var $windSpeed = $("<div>");
-  // var $weatherIcon = $("<img>");
+  var $weatherIcon = $("<img>");
   // $weatherIcon.addClass("icon");
   // var dateTime = "<div>";
 
@@ -67,7 +67,7 @@ function getWeatherData(lat, lon) {
   // $(".city").addClass("list-group");
   // $(".city").append($cityName);
   // $(".city").append(dateTime);
-  // $(".city").append($weatherIcon);
+  $("#current-weather").append($weatherIcon);
   // $(".city").append($temperature);
   // $(".city").append($windSpeed);
   // $(".city").append($humidity);
@@ -94,14 +94,15 @@ function getWeatherData(lat, lon) {
         $("list-group").append(listItem);
         if (i === 0) {
           var dateTime = obj.dt_txt;
-          console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
           var tempData = obj.main.temp;
           var humData = obj.main.humidity;
           var windSpeedData = obj.wind.speed;
           var currentConditionsData = obj.weather[0].description;
-          var weatherIcon = data.list[0].weather[0].icon;
+          var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-          weatherIcon.attr('src',imgSrc);
+          $weatherIcon.attr('src',imgSrc);
+          console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
+
         }
       } 
       
