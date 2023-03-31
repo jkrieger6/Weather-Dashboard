@@ -52,8 +52,8 @@ $("#searchBtn").on("click", addResult);
 // });
 
 function getWeatherData(lat, lon) {
-  // var $cityName = $("<h3>");
-  // var $temperature = $("<div>");
+  var $cityName = $("<h3>");
+  var $temperature = $("<div>");
   // var $humidity = $("<div>");
   // var $windSpeed = $("<div>");
   var $weatherIcon = $("<img>");
@@ -64,11 +64,11 @@ function getWeatherData(lat, lon) {
   // $(".city").empty();
   // cityInput = $("userInput").val();
 
-  // $(".city").addClass("list-group");
-  // $(".city").append($cityName);
+  $("#current-weather").addClass("list-group");
+  $("#current-weather").append($cityName);
   // $(".city").append(dateTime);
   $("#current-weather").append($weatherIcon);
-  // $(".city").append($temperature);
+  $("#currrent-weather").append($temperature);
   // $(".city").append($windSpeed);
   // $(".city").append($humidity);
 
