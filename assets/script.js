@@ -54,9 +54,10 @@ $("#searchBtn").on("click", addResult);
 function getWeatherData(lat, lon) {
   var $cityName = $("<h3>");
   var $temperature = $("<div>");
-  // var $humidity = $("<div>");
-  // var $windSpeed = $("<div>");
+  var $humidity = $("<div>");
+  var $windSpeed = $("<div>");
   var $weatherIcon = $("<img>");
+  var $conditions = $("<div>");
   // $weatherIcon.addClass("icon");
   // var dateTime = "<div>";
 
@@ -66,10 +67,11 @@ function getWeatherData(lat, lon) {
 
   $("#current-weather").addClass("list-group");
   $("#current-weather").append($cityName);
-  // $(".city").append(dateTime);
+  $("#current-weather").append($humidity);
   $("#current-weather").append($weatherIcon);
   $("#currrent-weather").append($temperature);
-  // $(".city").append($windSpeed);
+  $("#current-weather").append($windSpeed);
+  $("#current-weather").append($conditions);
   // $(".city").append($humidity);
 
   var weatherUrl =
