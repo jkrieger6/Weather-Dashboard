@@ -32,13 +32,12 @@ function getCityData(city) {
     })
     .then(function (data) {
       var cityData = data[0];
-      console.log(cityData);
+      // console.log(cityData);
       var geoLatitude = cityData.lat;
       var geoLongitude = cityData.lon;
       getWeatherData(geoLatitude, geoLongitude);
     });
 }
-
 
 // add event listener to search history buttons
 $("#searchBtn").on("click", addResult);
@@ -53,52 +52,72 @@ $("#searchBtn").on("click", addResult);
 // });
 
 function getWeatherData(lat, lon) {
+  // var $cityName = $("<h3>");
+  // var $temperature = $("<div>");
+  // var $humidity = $("<div>");
+  // var $windSpeed = $("<div>");
+  // var $weatherIcon = $("<img>");
+  // $weatherIcon.addClass("icon");
+  // var dateTime = "<div>";
 
-  var $cityName = $("<h3>");
-  var $temperature = $("<div>");
-  var $humidity = $("<div>");
-  var $windSpeed = $("<div>");
-  var $weatherIcon = $("<img>");
-  $weatherIcon.addClass("icon");
-  var dateTime = "<div>";
+  // $(".forecast-five-day").empty();
+  // $(".city").empty();
+  // cityInput = $("userInput").val();
 
-  $(".forecast-five-day").empty();
-  $(".city").empty();
-  cityInput = $("userInput").val();
+  // $(".city").addClass("list-group");
+  // $(".city").append($cityName);
+  // $(".city").append(dateTime);
+  // $(".city").append($weatherIcon);
+  // $(".city").append($temperature);
+  // $(".city").append($windSpeed);
+  // $(".city").append($humidity);
 
-  $(".city").addClass("list-group");
-  $(".city").append($cityName);
-  $(".city").append(dateTime);
-  $(".city").append($weatherIcon);
-  $(".city").append($temperature);
-  $(".city").append($windSpeed);
-  $(".city").append($humidity);
-
-var weatherUrl =
-  "https://api.openweathermap.org/data/2.5/forecast?lat="+ lat + "&lon=" + lon + "&units=imperial&appid="+ APIKey;
+  var weatherUrl =
+    "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    lat +
+    "&lon=" +
+    lon +
+    "&units=imperial&appid=" +
+    APIKey;
   fetch(weatherUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      for (let i = 0; i < data.length; i++) {
-        var listItem = document.createElement('li');
-        listItem.textContent = data[i].html_url;
+      for (let i = 0; i < data.list.length; i++) {
+        var obj = data.list[i];
+        if (obj.dt_txt.includes("00:00:00")) {
+          console.log(obj);
+        }
+        var listItem = document.createElement("li");
+        // listItem.textContent = data[i].html_url;
         $("list-group").append(listItem);
-      }
-      var dateTime = data.list[0].dt_txt;
-      var tempData = data.list[0].main.temp;
-      var humData = data.list[0].main.humidity;
-      var windSpeedData = data.list[0].wind.speed;
-      var currentConditionsData = data.list[0].weather[0].description;
-      var weatherIcon = data.list[0].weather[0].icon;
-      imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-      $weatherIcon.attr('src',imgSrc)
-      console.log(data);
-      console.log(dateTime);
-      console.log("Currently " + tempData + "F");
-      console.log("With a humidty of " + humData + "%");
-      console.log("A wind speed of " + windSpeedData + "mph");
-      console.log(currentConditionsData);
+        if (i === 0) {
+          var dateTime = obj.dt_txt;
+          console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
+          var tempData = obj.main.temp;
+          var humData = obj.main.humidity;
+          var windSpeedData = obj.wind.speed;
+          var currentConditionsData = obj.weather[0].description;
+          var weatherIcon = data.list[0].weather[0].icon;
+          imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
+          weatherIcon.attr('src',imgSrc);
+        }
+      } 
+      
+      // var dateTime = data.list[0].dt_txt;
+      // var tempData = data.list[0].main.temp;
+      // var humData = data.list[0].main.humidity;
+      // var windSpeedData = data.list[0].wind.speed;
+      // var currentConditionsData = data.list[0].weather[0].description;
+      // var weatherIcon = data.list[0].weather[0].icon;
+      // imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
+      // $weatherIcon.attr('src',imgSrc)
+      // console.log(data);
+      // console.log(dateTime);
+      // console.log("Currently " + tempData + "F");
+      // console.log("With a humidty of " + humData + "%");
+      // console.log("A wind speed of " + windSpeedData + "mph");
+      // console.log(currentConditionsData);
     });
 }
