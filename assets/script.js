@@ -39,7 +39,7 @@ function getCityData(city) {
       // console.log(cityData);
       var geoLatitude = cityData.lat;
       var geoLongitude = cityData.lon;
-      getWeatherData(geoLatitude, geoLongitude);
+      getWeatherData(geoLatitude, geoLongitude, cityData.name);
     });
 }
 
@@ -67,6 +67,7 @@ function getWeatherData(lat, lon) {
   // $(".city").empty();
   // cityInput = $("userInput").val();
 
+  $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
   $("#current-weather").append($cityName);
   $("#current-weather").append($humidity);
@@ -74,7 +75,6 @@ function getWeatherData(lat, lon) {
   $("#current-weather").append($temperature);
   $("#current-weather").append($windSpeed);
   $("#current-weather").append($conditions);
-  // $(".city").append($humidity);
 
   var weatherUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -88,6 +88,8 @@ function getWeatherData(lat, lon) {
       return response.json();
     })
     .then(function (data) {
+      var currentDate = new Date();
+      var currentDay = currentDate.getDay()
       for (let i = 0; i < data.list.length; i++) {
         var obj = data.list[i];
         if (obj.dt_txt.includes("00:00:00")) {
@@ -95,7 +97,7 @@ function getWeatherData(lat, lon) {
         }
         var listItem = document.createElement("li");
         // listItem.textContent = data[i].html_url;
-        $("list-group").append(listItem);
+        $(".list-group").append(listItem);
         if (i === 0) {
           var dateTime = obj.dt_txt;
           var tempData = obj.main.temp;
