@@ -19,6 +19,8 @@ function addResult() {
   // }
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
+  $("#forecast").attr("style", "display:inline-block");
+  getCityData(cityInput)
 }
 
 function getCityData(city) {
@@ -40,16 +42,6 @@ function getCityData(city) {
     });
 }
 
-// $('#searchBtn').on("click", getWeather);
-
-//add event listener to seach history items
-// $("search-history").on("click", function (event) {
-//   event.preventDefault();
-//   $("current-weather").attr("style", "display:inline-block");
-//   $userInputEl.value = event.target.id;
-//   getResult();
-// });
-
 function getWeatherData(lat, lon) {
   var $cityName = $("<h3>");
   var $temperature = $("<div>");
@@ -57,12 +49,6 @@ function getWeatherData(lat, lon) {
   var $windSpeed = $("<div>");
   var $weatherIcon = $("<img>");
   var $conditions = $("<div>");
-  // $weatherIcon.addClass("icon");
-  // var dateTime = "<div>";
-
-  // $(".forecast-five-day").empty();
-  // $(".city").empty();
-  // cityInput = $("userInput").val();
 
   // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
@@ -85,8 +71,8 @@ function getWeatherData(lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      var currentDate = new Date();
-      var currentDay = currentDate.getDay()
+      // var currentDate = new Date();
+      // var currentDay = currentDate.getDay()
       for (let i = 0; i < data.list.length; i++) {
         var obj = data.list[i];
         if (obj.dt_txt.includes("00:00:00")) {
@@ -97,8 +83,6 @@ function getWeatherData(lat, lon) {
         $(".list-group").append(listItem);
         if (i === 0) {
           var dateTime = obj.dt_txt;
-          $("#current-weather").append(dateTime);
-          $(dateTime).text();
           var tempData = Math.floor(obj.main.temp);
           $("#current-weather").append(tempData);
           $(tempData).text();
