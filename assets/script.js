@@ -97,6 +97,8 @@ function getWeatherData(lat, lon) {
         $(".list-group").append(listItem);
         if (i === 0) {
           var dateTime = obj.dt_txt;
+          $("#current-weather").append(dateTime);
+          $(dateTime).text();
           var tempData = obj.main.temp;
           var humData = obj.main.humidity;
           var windSpeedData = obj.wind.speed;
