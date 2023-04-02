@@ -2,11 +2,9 @@
     --headerColor:rgb(178, 2, 2);
     --light:rgb(244, 244, 164);
     --shadow:rgba(88, 74, 74, 0.221);
+    --textColor:rgb(10, 10, 104);
 }
 
-* {
-    box-sizing: border-box;
-}
 
 h1 {
     color: var(--headerColor);
@@ -48,6 +46,11 @@ h1.app-title {
 
 #current-weather, #forecast {
     display:none;
+    font: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:var(--textColor);
+    background-color: var(--shadow);
+    
 }
 
 #userInput {
