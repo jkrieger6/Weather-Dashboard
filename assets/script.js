@@ -52,12 +52,12 @@ function getWeatherData(lat, lon) {
 
   // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
-  $("#current-weather").append($cityName);
-  $("#current-weather").append($humidity);
+  // $("city").append($cityName);
+  // $("#current-weather").append($humidity);
   $("#current-weather").append($weatherIcon);
-  $("#current-weather").append($temperature);
-  $("#current-weather").append($windSpeed);
-  $("#current-weather").append($conditions);
+  // $("#current-weather").append($temperature);
+  // $("#current-weather").append($windSpeed);
+  // $("#current-weather").append($conditions);
 
   var weatherUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -93,6 +93,8 @@ function getWeatherData(lat, lon) {
           $("#current-weather").append(windSpeedData);
           $(windSpeedData).text();
           var currentConditionsData = obj.weather[0].description;
+          $("#current-weather").append(currentConditionsData);
+          $(currentConditionsData).text();
           var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
           $weatherIcon.attr('src',imgSrc);
