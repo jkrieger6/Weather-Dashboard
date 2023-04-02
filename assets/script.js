@@ -64,7 +64,7 @@ function getWeatherData(lat, lon) {
   // $(".city").empty();
   // cityInput = $("userInput").val();
 
-  $("#current-weather").empty();
+  // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
   $("#current-weather").append($cityName);
   $("#current-weather").append($humidity);
@@ -99,9 +99,15 @@ function getWeatherData(lat, lon) {
           var dateTime = obj.dt_txt;
           $("#current-weather").append(dateTime);
           $(dateTime).text();
-          var tempData = obj.main.temp;
+          var tempData = Math.floor(obj.main.temp);
+          $("#current-weather").append(tempData);
+          $(tempData).text();
           var humData = obj.main.humidity;
-          var windSpeedData = obj.wind.speed;
+          $("#current-weather").append(humData);
+          $(humData).text();
+          var windSpeedData = Math.floor(obj.wind.speed);
+          $("#current-weather").append(windSpeedData);
+          $(windSpeedData).text();
           var currentConditionsData = obj.weather[0].description;
           var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
