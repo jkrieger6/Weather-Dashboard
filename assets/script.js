@@ -41,13 +41,9 @@ function getCityData(city) {
 
 function getWeatherData(lat, lon) {
   var $cityName = $("<h3>");
-  var $temperature = $("<div>");
-  var $humidity = $("<div>");
-  var $windSpeed = $("<div>");
   var $weatherIcon = $("<img>");
-  var $conditions = $("<div>");
 
-  $("#current-weather").empty();
+  // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
   $("city").append($cityName);
   $("#current-weather").append($weatherIcon);
@@ -60,17 +56,16 @@ function getWeatherData(lat, lon) {
     lon +
     "&units=imperial&appid=" +
     APIKey;
+
   fetch(weatherUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // var currentDate = new Date();
-      // var currentDay = currentDate.getDay()
       var $list = $("#current-weather ol");
       for (let i = 0; i < data.list.length; i++) {
         var obj = data.list[i];
-        if (obj.dt_txt.includes("00:00:00")) {
+        if (obj.dt_txt.includes("12:00:00")) {
           var $listItem = $("<li>");
           var tempData = Math.floor(obj.main.temp);
           var humData = obj.main.humidity;
@@ -90,6 +85,7 @@ function getWeatherData(lat, lon) {
           $listItem.append($("<img>").attr("src", imgSrc));
           $list.append($listItem);
         }
+        console.log(data);
 
         // listItem.textContent = data[i].html_url;
         // $(".list-group").append(listItem);
