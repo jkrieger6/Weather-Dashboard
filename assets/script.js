@@ -98,7 +98,7 @@ function getWeatherData(lat, lon) {
           var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
           $weatherIcon.attr('src',imgSrc);
-          console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
+          // console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
 
         }
       } 
