@@ -76,6 +76,26 @@ function getWeatherData(lat, lon) {
         }
         // console.log(data);
 
+        var forecastUrl =
+        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&units=imperial&appid=" +
+        APIKey;
+
+        fetch(forecastUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      var $forecastListEl = $("#forecast ol");
+      for (let i = 1; i > data.list.length; i++)
+      var forecastObj = data.list[i];
+      if (forecastObj.includes("00:00:00")) {
+        
+      }
+    });
         // listItem.textContent = data[i].html_url;
         // $(".list-group").append(listItem);
         //   if (i === 0) {
