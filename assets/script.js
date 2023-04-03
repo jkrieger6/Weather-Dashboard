@@ -1,18 +1,10 @@
 var APIKey = "5b2b7b9a047f3cbe2fa1edd5d1203608";
 var $userInputEl = $("#userInput");
-var userFormEl = document.querySelector("#user-form");
-
 //add event listener to search button
 $("#searchBtn").on("click", addResult);
 // collects users input in the search and displays it into the search history
 function addResult() {
   var cityInput = $userInputEl.val();
-  // searchHistoryEl = getInfo();
-  var searchCity = $("<div>");
-  searchCity.attr("id", cityInput);
-  searchCity.text(cityInput);
-  searchCity.addClass("<h4>");
-
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
   $("#forecast").attr("style", "display:inline-block");
