@@ -7,7 +7,6 @@ function addResult() {
   var cityInput = $userInputEl.val();
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
-  $("#forecast").attr("style", "display:inline-block");
 }
 
 function getCityData(city) {
@@ -36,6 +35,8 @@ function getWeatherData(lat, lon) {
   // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
   $("#current-weather").append($("<ol>"));
+  $("#forecast").attr("style", "display:inline-block");
+
 
   var weatherUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
