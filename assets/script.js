@@ -7,7 +7,6 @@ $("#searchBtn").on("click", addResult);
 // collects users input in the search and displays it into the search history
 function addResult() {
   var cityInput = $userInputEl.val();
-  getCityData(cityInput);
   // searchHistoryEl = getInfo();
   var searchCity = $("<div>");
   searchCity.attr("id", cityInput);
@@ -17,7 +16,6 @@ function addResult() {
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
   $("#forecast").attr("style", "display:inline-block");
-  getCityData(cityInput);
 }
 
 function getCityData(city) {
@@ -63,7 +61,7 @@ function getWeatherData(lat, lon) {
       var $list = $("#current-weather ol");
       for (let i = 0; i < data.list.length; i++) {
         var obj = data.list[i];
-        if (obj.dt_txt.includes("12:00:00")) {
+        if (obj.dt_txt.includes("00:00:00")) {
           var $listItem = $("<li>");
           var tempData = Math.floor(obj.main.temp);
           var humData = obj.main.humidity;
@@ -83,7 +81,7 @@ function getWeatherData(lat, lon) {
           $listItem.append($("<img>").attr("src", imgSrc));
           $list.append($listItem);
         }
-        console.log(data);
+        // console.log(data);
 
         // listItem.textContent = data[i].html_url;
         // $(".list-group").append(listItem);
