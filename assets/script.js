@@ -12,11 +12,8 @@ function addResult() {
   var searchCity = $("<div>");
   searchCity.attr("id", cityInput);
   searchCity.text(cityInput);
-  searchCity.addClass("h4");
+  searchCity.addClass("<h4>");
 
-  // if (!searchHistoryEl.includes(cityInput)) {
-  //     $("#search-history").append(searchCity)
-  // }
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
   $("#forecast").attr("style", "display:inline-block");
@@ -50,14 +47,11 @@ function getWeatherData(lat, lon) {
   var $weatherIcon = $("<img>");
   var $conditions = $("<div>");
 
-  // $("#current-weather").empty();
+  $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
-  // $("city").append($cityName);
-  // $("#current-weather").append($humidity);
+  $("city").append($cityName);
   $("#current-weather").append($weatherIcon);
-  // $("#current-weather").append($temperature);
-  // $("#current-weather").append($windSpeed);
-  // $("#current-weather").append($conditions);
+  $("#current-weather").append($("<ol>"));
 
   var weatherUrl =
     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
@@ -73,35 +67,47 @@ function getWeatherData(lat, lon) {
     .then(function (data) {
       // var currentDate = new Date();
       // var currentDay = currentDate.getDay()
+      var $list = $("#current-weather ol");
       for (let i = 0; i < data.list.length; i++) {
         var obj = data.list[i];
         if (obj.dt_txt.includes("00:00:00")) {
-          console.log(obj);
-        }
-        var listItem = document.createElement("li");
-        // listItem.textContent = data[i].html_url;
-        $(".list-group").append(listItem);
-        if (i === 0) {
-          var dateTime = obj.dt_txt;
+          var $listItem = $("<li>");
           var tempData = Math.floor(obj.main.temp);
-          $("#current-weather").append(tempData);
-          $(tempData).text();
           var humData = obj.main.humidity;
-          $("#current-weather").append(humData);
-          $(humData).text();
           var windSpeedData = Math.floor(obj.wind.speed);
-          $("#current-weather").append(windSpeedData);
-          $(windSpeedData).text();
           var currentConditionsData = obj.weather[0].description;
-          $("#current-weather").append(currentConditionsData);
-          $(currentConditionsData).text();
           var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-          $weatherIcon.attr('src',imgSrc);
-          // console.log(dateTime, tempData, humData, windSpeedData, currentConditionsData);
+          // $listItem.append($("<span>").text(dateTime));
+          $listItem.append($("<span>").text(" Temp: " + tempData + "F"));
+          $listItem.append($("<span>").text(" Humidity: " + humData + "%"));
+          $listItem.append(
+            $("<span>").text(" Wind Speed: " + windSpeedData + "mph")
+          );
+          $listItem.append(
+            $("<span>").text(" Conditions: " + currentConditionsData)
+          );
+          $listItem.append($("<img>").attr("src", imgSrc));
+
+          $list.append($listItem);
 
         }
-      } 
+        
+        // listItem.textContent = data[i].html_url;
+        // $(".list-group").append(listItem);
+      //   if (i === 0) {
+          // var dateTime = obj.dt_txt;
+      //     $listItem.append(tempData);
+      //     $(tempData).text();
+      //     $("#current-weather").append(humData);
+      //     $(humData).text();
+      //     $("#current-weather").append(windSpeedData);
+      //     $(windSpeedData).text();
+      //     $("#current-weather").append(currentConditionsData);
+      //     $(currentConditionsData).text();
+      //     $weatherIcon.attr('src',imgSrc);
+      //   }
+      // } 
       
       // var dateTime = data.list[0].dt_txt;
       // var tempData = data.list[0].main.temp;
@@ -117,5 +123,5 @@ function getWeatherData(lat, lon) {
       // console.log("With a humidty of " + humData + "%");
       // console.log("A wind speed of " + windSpeedData + "mph");
       // console.log(currentConditionsData);
-    });
+}});
 }
