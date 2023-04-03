@@ -48,9 +48,7 @@ h1.app-title {
     display:none;
     font: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    color:var(--textColor);
-    background-color: var(--shadow);
-    
+    color:var(--light);
 }
 
 #userInput {
