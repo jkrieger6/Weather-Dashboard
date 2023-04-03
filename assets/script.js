@@ -45,8 +45,6 @@ function getWeatherData(lat, lon) {
 
   // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
-  $("city").append($cityName);
-  $("#current-weather").append($weatherIcon);
   $("#current-weather").append($("<ol>"));
 
   var weatherUrl =
@@ -73,14 +71,14 @@ function getWeatherData(lat, lon) {
           var currentConditionsData = obj.weather[0].description;
           var weatherIcon = obj.weather[0].icon;
           imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-          // $listItem.append($("<span>").text(dateTime));
-          $listItem.append($("<span>").text(" Temp: " + tempData + "F"));
-          $listItem.append($("<span>").text(" Humidity: " + humData + "%"));
+          $listItem.append($("<ol>").text(dateTime));
+          $listItem.append($("<ol>").text(" Temp: " + tempData + "F"));
+          $listItem.append($("<ol>").text(" Humidity: " + humData + "%"));
           $listItem.append(
-            $("<span>").text(" Wind Speed: " + windSpeedData + "mph")
+            $("<ol>").text(" Wind Speed: " + windSpeedData + "mph")
           );
           $listItem.append(
-            $("<span>").text(" Conditions: " + currentConditionsData)
+            $("<ol>").text(" Conditions: " + currentConditionsData)
           );
           $listItem.append($("<img>").attr("src", imgSrc));
           $list.append($listItem);
@@ -90,7 +88,7 @@ function getWeatherData(lat, lon) {
         // listItem.textContent = data[i].html_url;
         // $(".list-group").append(listItem);
         //   if (i === 0) {
-        // var dateTime = obj.dt_txt;
+        var dateTime = obj.dt_txt;
         //     $listItem.append(tempData);
         //     $(tempData).text();
         //     $("#current-weather").append(humData);
