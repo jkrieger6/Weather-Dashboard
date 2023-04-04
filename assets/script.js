@@ -10,10 +10,10 @@ function addResult(event) {
   getCityData(cityInput);
 }
 
-function getCityData(city) {
+function getCityData(cityInput) {
   var geoUrl =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
-    city +
+    cityInput +
     "&limit=5&appid=" +
     APIKey;
   fetch(geoUrl)
