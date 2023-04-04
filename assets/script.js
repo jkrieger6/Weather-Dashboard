@@ -3,7 +3,8 @@ var $userInputEl = $("#userInput");
 //add event listener to search button
 $("#searchBtn").on("click", addResult);
 // collects users input in the search and displays it into the search history
-function addResult() {
+function addResult(event) {
+  event.preventDefault();
   var cityInput = $userInputEl.val();
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
@@ -29,8 +30,6 @@ function getCityData(city) {
 }
 
 function getWeatherData(lat, lon) {
-  var $cityName = $("<h3>");
-  var $weatherIcon = $("<img>");
 
   // $("#current-weather").empty();
   $("#current-weather").addClass("list-group");
@@ -73,29 +72,38 @@ function getWeatherData(lat, lon) {
           );
           $listItem.append($("<img>").attr("src", imgSrc));
           $list.append($listItem);
-        }
-        // console.log(data);
-
-        var forecastUrl =
-        "https://api.openweathermap.org/data/2.5/forecast?lat=" +
-        lat +
-        "&lon=" +
-        lon +
-        "&units=imperial&appid=" +
-        APIKey;
-
-        fetch(forecastUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      var $forecastListEl = $("#forecast ol");
-      for (let i = 1; i > data.list.length; i++)
-      var forecastObj = data.list[i];
-      if (forecastObj.includes("00:00:00")) {
+          
+        //   var todayDate = dayjs().format("dddd, MMM DD YYYY");
+        // $("#currentDay").html(todayDate);
+        // $(".saveBtn").on("click", function () {
+        //  var text = $(this).siblings("#userInput").val();
+        // var time = $(this).parent().attr("id");
+        // // Save text in local storage
+        // localStorage.setItem(time, text);
         
-      }
-    });
+        }
+        console.log(obj);
+
+    //     var forecastUrl =
+    //     "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+    //     lat +
+    //     "&lon=" +
+    //     lon +
+    //     "&units=imperial&appid=" +
+    //     APIKey;
+
+    //     fetch(forecastUrl)
+    // .then(function (response) {
+    //   return response.json();
+    // })
+    // .then(function (data) {
+    //   var $forecastListEl = $("#forecast ol");
+    //   for (let i = 1; i > data.list.length; i++)
+    //   var forecastObj = data.list[i];
+    //   if (forecastObj.includes("00:00:00")) {
+        
+    //   }
+    // });
         // listItem.textContent = data[i].html_url;
         // $(".list-group").append(listItem);
         //   if (i === 0) {
