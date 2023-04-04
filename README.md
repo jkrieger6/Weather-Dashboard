@@ -1,7 +1,7 @@
 # Weather-Dashboard
 Use the 5 Day Weather Forecast to retrieve weather data for cities. Type in any city into the search bar to get the weather data for that current time and day as well as the future forecast of that city. To make it easier to remember where you have searched the search history will be at the bottom of the page and will be activated upon "click".
 
-Application live at: 
+Application live at: https://jkrieger6.github.io/Weather-Dashboard/
 
 ## Installation
 Made using the latest versions of GitHub, Bootstrap, Dayjs, Visual Studio Code, and jQuery. APIs used for this application are OpenWeatherAPI and GeoLocator API that finds the city based on geographical coordinates.
