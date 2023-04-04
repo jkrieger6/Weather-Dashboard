@@ -2,12 +2,19 @@ var APIKey = "5b2b7b9a047f3cbe2fa1edd5d1203608";
 var $userInputEl = $("#userInput");
 //add event listener to search button
 $("#searchBtn").on("click", addResult);
+$("#searchBtn").on("click", addToSearchHistory);
 // collects users input in the search and displays it into the search history
 function addResult(event) {
   event.preventDefault();
   var cityInput = $userInputEl.val();
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
+}
+// add function to display searched city in search history container
+function addToSearchHistory(city) {
+  var $list = $("#search-history ul");
+  var $listItem = $("<li>").text(city);
+  $list.prepend($listItem);
 }
 
 function getCityData(cityInput) {
@@ -62,8 +69,12 @@ function renderForecast(arrayOfWeatherObjects) {
       $listItem.append($("<div>").text(dateTime));
       $listItem.append($("<div>").text(" Temp: " + tempData + "F"));
       $listItem.append($("<div>").text(" Humidity: " + humData + "%"));
-      $listItem.append($("<div>").text(" Wind Speed: " + windSpeedData + "mph"));
-      $listItem.append($("<div>").text(" Conditions: " + currentConditionsData));
+      $listItem.append(
+        $("<div>").text(" Wind Speed: " + windSpeedData + "mph")
+      );
+      $listItem.append(
+        $("<div>").text(" Conditions: " + currentConditionsData)
+      );
       $listItem.append($("<img>").attr("src", imgSrc));
       $list.append($listItem);
     }
@@ -92,6 +103,6 @@ function getWeatherData(lat, lon) {
       var $list = $("#current-weather ol");
       console.log(data);
       renderCurrentWeather(data.list[0]);
-      renderForecast(data.list)
+      renderForecast(data.list);
     });
 }
