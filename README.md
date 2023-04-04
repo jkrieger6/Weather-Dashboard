@@ -19,7 +19,7 @@ When the user enters a city into the search bar teh current weather as well as t
 For support, email me at jkrieger11@gmail.com .
 
 ## Roadmap
-Application has no plans for future updates.
+Application has plans for future updates. When city is searched the city wil be placed into the search history container. When the city is clicked the weather for that city will appear in the weather containers.
 
 ## Contributing
 N/A
@@ -32,4 +32,4 @@ Jake Krieger
 None
 
 ## Project status
-Development for this application has stopped. If you wish to add anything to existing code, please use the email listed in support for questions, comments, or ideas.
+Development for this application is on-going. If you wish to add anything to existing code, please use the email listed in support for questions, comments, or ideas.
