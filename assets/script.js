@@ -10,15 +10,15 @@ function addResult(event) {
   var cityInput = $userInputEl.val();
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
-//   addToSearchHistory(cityInput);
+  addToSearchHistory(cityInput);
 }
 
 // add function to display searched city in search history container
-// function addToSearchHistory(cityInput) {
-//   var $list = $("#search-history ul");
-//   var $listItem = $("<li>").text(cityInput);
-//   $list.append($listItem);
-// }
+function addToSearchHistory(cityInput) {
+  var $list = $("#search-history");
+  var $listItem = $("<li>").text(cityInput);
+  $list.append($listItem);
+}
 
 function getCityData(cityInput) {
   var geoUrl =
