@@ -1,21 +1,24 @@
 var APIKey = "5b2b7b9a047f3cbe2fa1edd5d1203608";
 var $userInputEl = $("#userInput");
+
 //add event listener to search button
 $("#searchBtn").on("click", addResult);
+
 // collects users input in the search and displays it into the search history
 function addResult(event) {
   event.preventDefault();
   var cityInput = $userInputEl.val();
   $("#current-weather").attr("style", "display:inline-block");
   getCityData(cityInput);
-  addToSearchHistory(cityInput);
+//   addToSearchHistory(cityInput);
 }
+
 // add function to display searched city in search history container
-function addToSearchHistory(cityInput) {
-  var $list = $("#search-history ul");
-  var $listItem = $("<li>").text(cityInput);
-  $list.append($listItem);
-}
+// function addToSearchHistory(cityInput) {
+//   var $list = $("#search-history ul");
+//   var $listItem = $("<li>").text(cityInput);
+//   $list.append($listItem);
+// }
 
 function getCityData(cityInput) {
   var geoUrl =
