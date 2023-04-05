@@ -17,6 +17,9 @@ function addResult(event) {
 function addToSearchHistory(cityInput) {
   var $list = $("#search-history");
   var $listItem = $("<li>").text(cityInput);
+  $listItem.on("click", function() {
+    getCityData(cityInput);
+  });
   $list.append($listItem);
 }
 
