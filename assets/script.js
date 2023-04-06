@@ -50,7 +50,7 @@ function renderCurrentWeather(weatherObj) {
   var currentConditionsData = weatherObj.weather[0].description;
   var weatherIcon = weatherObj.weather[0].icon;
   imgSrc = "https://openweathermap.org/img/wn/" + weatherIcon + ".png";
-  var $cityEl = $(".city");
+  var $cityEl = $("#current-weather");
   $cityEl.append($("<div>").text(dateTime));
   $cityEl.append($("<div>").text(" Temp: " + tempData + "F"));
   $cityEl.append($("<div>").text(" Humidity: " + humData + "%"));
@@ -60,7 +60,8 @@ function renderCurrentWeather(weatherObj) {
 }
 
 function renderForecast(arrayOfWeatherObjects) {
-  var $list = $(".forecast-five-day");
+  var $list = $("#forecast");
+  $list.empty();
   for (let i = 0; i < arrayOfWeatherObjects.length; i++) {
     var obj = arrayOfWeatherObjects[i];
     var dateTime = obj.dt_txt;
