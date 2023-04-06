@@ -24,6 +24,7 @@ function addToSearchHistory(cityInput) {
 }
 
 function getCityData(cityInput) {
+  $("#current-weather").empty();
   var geoUrl =
     "https://api.openweathermap.org/geo/1.0/direct?q=" +
     cityInput +
